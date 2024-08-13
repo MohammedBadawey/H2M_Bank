@@ -15,6 +15,6 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello Mohammed M Badawey!" << endl;
+    cout << "Mohammed M Badawey!" << endl;
     return 0;
 }
