@@ -1,11 +1,23 @@
 #ifndef PERSON_H
 #define PERSON_H
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <exception>
+using namespace std;
 
+class Person{
+protected:
+	// att
 
-class Person
-{
-    public:
-        Person();
+public:
+	// cons
+
+	//setter
+
+	//getter
+
+	//method
 
 };
 

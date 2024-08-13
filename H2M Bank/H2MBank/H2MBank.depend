@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1723575970 source:d:\mohammed\corses\programming learn\route\ahmed abdo\h2m_bank\h2m bank\h2mbank\main.cpp
+	<iostream>
+	<string>
+	<cmath>
+	<exception>
+	<Person.h>
+
+1723576133 d:\mohammed\corses\programming learn\route\ahmed abdo\h2m_bank\h2m bank\h2mbank\include\person.h
+	<iostream>
+	<string>
+	<cmath>
+	<exception>
+
+1723576033 source:d:\mohammed\corses\programming learn\route\ahmed abdo\h2m_bank\h2m bank\h2mbank\src\person.cpp
+	"Person.h"
+
