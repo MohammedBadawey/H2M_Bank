@@ -14,14 +14,18 @@ protected:
     string password;
 public:
 	// cons
-    Person(){
-    int id =0;}
+    Person()
+    {
+        id =0;
+    }
     Person (string name , int id, string password)
+    {
     this-> name = name;
     this->id =id;
     this->password=password;
+    }
 	//setter
-    void steName(string name)
+    void setName(string name)
     {
         this->name=name;
     }
@@ -58,7 +62,7 @@ public:
     {
         cout << "Name -> " << name << endl;
         cout << "Id -> " << id << endl;
-        cout << "Password" << "******" << endl;
+        cout << "Password-> " << "******" << endl;
     }
 };
 
