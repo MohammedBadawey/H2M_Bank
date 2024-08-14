@@ -17,7 +17,8 @@ int main()
     a.Printinfo();
     cout << endl;
     m.Printinfo();
-    cout << endl;    h.Printinfo();
+    cout << endl;
+    h.Printinfo();
     cout << endl;
 
     return 0;
