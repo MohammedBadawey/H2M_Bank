@@ -15,8 +15,10 @@ int main()
     Employee m ("Mohammed",1,"123",3500.5);
     Admin h ("Hassan",1,"123",200);
     a.Printinfo();
+    cout << endl;
     m.Printinfo();
-    h.Printinfo();
+    cout << endl;    h.Printinfo();
+    cout << endl;
 
     return 0;
 }
