@@ -5,20 +5,21 @@
 #include <cmath>
 #include <exception>
 #include <Employee.h>
-
 using namespace std;
+
 class Admin : public Employee
 {
-    //att
-private:
-    //cons
-    public:
-    // setter
+public:
+    Admin() {}
 
-    //getter
+    Admin(string name, int id, string password, double salary)
+        : Employee(name, id, password, salary)
+    {}
 
-    // methods
-
+    void Printinfo()
+    {
+        Employee::Printinfo();
+    }
 };
 
 #endif // ADMIN_H
