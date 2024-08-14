@@ -25,9 +25,16 @@ private:
         }
         //setter
         void setBalance(double balance)
+         {
+        if (Validation::validateMinBalance(balance))
         {
-            this->balance=balance;
+            this->balance = balance;
         }
+        else
+        {
+            throw invalid_argument("Invalid balance.");
+        }
+    }
         // getter
         double getBalance()
         {
