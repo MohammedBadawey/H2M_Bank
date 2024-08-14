@@ -7,8 +7,8 @@
 #include <Person.h>
 using namespace std;
 
-
-class Client : public Person{
+class Client : public Person
+{
     	// att
 private:
     double balance;

@@ -4,18 +4,21 @@
 #include <string>
 #include <cmath>
 #include <exception>
+#include <Employee.h>
+
 using namespace std;
-
-
-class Admin
+class Admin : public Employee
 {
+    //att
+private:
+    //cons
     public:
-        Admin();
-        virtual ~Admin();
+    // setter
 
-    protected:
+    //getter
 
-    private:
+    // methods
+
 };
 
 #endif // ADMIN_H
