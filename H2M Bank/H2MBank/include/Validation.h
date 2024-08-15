@@ -30,7 +30,7 @@ public:
             }
            else {
             cout << "The name must be only characters\n";
-            cout << "Enter your named again\n";
+            cout << "Enter your name again\n";
             return false;
            }
 }
@@ -60,6 +60,7 @@ public:
         if (balance < 1500)
         {
             cout << "Balance must be at least 1500\n";
+            cout << "Please enter balance again\n";
             return false;
         }
         return true;

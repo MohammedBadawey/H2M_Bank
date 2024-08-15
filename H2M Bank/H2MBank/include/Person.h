@@ -14,6 +14,7 @@ protected:
     string name;
     int id;
     string password;
+public:
 	// cons
     Person()
     {
@@ -21,12 +22,10 @@ protected:
     }
     Person (string name , int id, string password)
     {
-
-        this->name=name;
-        this->id =id;
-        this->password = password;
+        setName(name);
+        SetId(id);
+        setPassword(password);
     }
-public:
 	//setter
      void setName(string name)
     {

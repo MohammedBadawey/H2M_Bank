@@ -1,22 +1,22 @@
+#ifndef BANKACCOUNT_H
+#define BANKACCOUNT_H
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <exception>
-#include <vector>
 #include <Person.h>
 #include <Client.h>
 #include <Employee.h>
 #include <Admin.h>
 #include <Validation.h>
-#include <Functions.h>
-#include <BankAccount.h>
-
+#include <vector>
 using namespace std;
 
-vector<Client> Functions::clientList;
-int main(){
-    Functions::OpenSystem();
+class BankAccount
+{
+public:
+   vector<Client> acounts;
 
-    return 0;
+};
 
-}
+#endif // BANKACCOUNT_H

@@ -22,12 +22,20 @@ private:
         }
         Employee(string name , int id, string password, double salary) : Person(name,id,password)
         {
-        this->salary=salary;
+            setSalary(salary);
+
         }
         //setter
         void setSalary(double salary)
         {
-        this->salary=salary;
+        if(Validation::checkBalance(salary))
+          {
+                this->salary=salary;
+          }
+        else {
+            cin >> salary;
+            setSalary(salary);
+        }
         }
 
         // getter

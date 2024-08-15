@@ -22,13 +22,20 @@ private:
         }
         Client(string name , int id, string password, double balance) : Person(name,id,password)
         {
-        this->balance=balance;
+          setBalance(balance);
         }
 
         //setter
         void setBalance(double balance)
         {
-        this->balance=balance;
+          if(Validation::checkBalance(balance))
+          {
+                this->balance=balance;
+          }
+        else {
+            cin >> balance;
+            setBalance(balance);
+        }
         }
         // getter
         double getBalance()
@@ -45,7 +52,7 @@ private:
 
         void withdraw(double amount)
         {
-            if (amount >= balance)
+            if (amount <= balance)
             {
             balance -= amount;
             }
