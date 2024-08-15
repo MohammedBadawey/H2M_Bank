@@ -19,7 +19,7 @@ public:
         int sum=0;
         for(int i =0;i<lengthOfName;i++)
     {
-        if(isalpha(name[i]))
+        if(isalpha(name[i])|| name[i]== ' ')
         {
             sum++;
         }

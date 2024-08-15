@@ -30,8 +30,12 @@ public:
 	//setter
      void setName(string name)
     {
-
-        this->name=name;
+        if (Validation ::checkName(name))
+        {
+            this->name=name;
+        }
+        else {cin >> name;
+        setName(name);}
     }
 
      void SetId(int id)
@@ -42,7 +46,14 @@ public:
     void setPassword(string password)
 
     {
+        if (Validation ::checkPassword(password))
+        {
         this->password=password;
+        }
+        else {
+            cin >> password;
+            setPassword(password);
+        }
     }
 
 	//getter

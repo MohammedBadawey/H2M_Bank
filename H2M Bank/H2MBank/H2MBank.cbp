@@ -37,12 +37,14 @@
 		<Unit filename="include/Admin.h" />
 		<Unit filename="include/Client.h" />
 		<Unit filename="include/Employee.h" />
+		<Unit filename="include/Functions.h" />
 		<Unit filename="include/Person.h" />
 		<Unit filename="include/Validation.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Admin.cpp" />
 		<Unit filename="src/Client.cpp" />
 		<Unit filename="src/Employee.cpp" />
+		<Unit filename="src/Functions.cpp" />
 		<Unit filename="src/Person.cpp" />
 		<Unit filename="src/Validation.cpp" />
 		<Extensions>
