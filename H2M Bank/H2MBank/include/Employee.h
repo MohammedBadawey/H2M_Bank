@@ -4,6 +4,7 @@
 #include <string>
 #include <cmath>
 #include <exception>
+#include <stdexcept>
 #include <Person.h>
 #include <Validation.h>
 using namespace std;
@@ -26,8 +27,9 @@ private:
         //setter
         void setSalary(double salary)
         {
-            this->salary=salary;
+        this->salary=salary;
         }
+
         // getter
         double getSalary()
         {
@@ -35,9 +37,9 @@ private:
         }
 
         // methods
-         void Printinfo()
+         void Display()
          {
-             Person :: Printinfo();
+             Person :: Display();
              cout << "Salary-> " << salary << endl;
          }
 };

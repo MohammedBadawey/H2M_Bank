@@ -4,6 +4,7 @@
 #include <string>
 #include <cmath>
 #include <exception>
+#include <stdexcept>
 #include <Employee.h>
 #include <Validation.h>
 using namespace std;
@@ -17,9 +18,9 @@ public:
         : Employee(name, id, password, salary)
     {}
 
-    void Printinfo()
+    void Display()
     {
-        Employee::Printinfo();
+        Employee::Display();
     }
 };
 

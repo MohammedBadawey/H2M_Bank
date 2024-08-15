@@ -4,6 +4,7 @@
 #include <string>
 #include <cmath>
 #include <exception>
+#include <stdexcept>
 #include <Validation.h>
 using namespace std;
 
@@ -13,7 +14,6 @@ protected:
     string name;
     int id;
     string password;
-public:
 	// cons
     Person()
     {
@@ -21,29 +21,30 @@ public:
     }
     Person (string name , int id, string password)
     {
-    this-> name = name;
-    this->id =id;
-    this->password=password;
+
+        this->name=name;
+        this->id =id;
+        this->password = password;
     }
+public:
 	//setter
-    void setName(string name)
+     void setName(string name)
     {
+
         this->name=name;
     }
-    void SetId(int id)
+
+     void SetId(int id)
     {
         this->id=id;
     }
+
     void setPassword(string password)
+
     {
         this->password=password;
     }
-    void setPersonData(string name,int id,string password)
-    {
-        this->name=name;
-        this->id=id;
-        this->password=password;
-    }
+
 	//getter
     string getName()
 	{
@@ -59,11 +60,10 @@ public:
 	}
 
 	//method
-    void Printinfo()
+    void Display()
     {
         cout << "Name -> " << name << endl;
         cout << "Id -> " << id << endl;
-        cout << "Password-> " << "******" << endl;
     }
 };
 

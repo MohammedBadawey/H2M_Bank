@@ -4,6 +4,7 @@
 #include <string>
 #include <cmath>
 #include <exception>
+#include <stdexcept>
 #include <Person.h>
 #include <Validation.h>
 using namespace std;
@@ -23,13 +24,11 @@ private:
         {
         this->balance=balance;
         }
+
         //setter
         void setBalance(double balance)
-         {
-
-
-            this->balance = balance;
-
+        {
+        this->balance=balance;
         }
         // getter
         double getBalance()
@@ -38,9 +37,42 @@ private:
         }
 
         // methods
-         void Printinfo()
+
+         void deposit(double amount)
+        {
+        balance += amount;
+        }
+
+        void withdraw(double amount)
+        {
+            if (amount >= balance)
+            {
+            balance -= amount;
+            }
+            else
+            {
+                cout << "Wrong value\n";
+            }
+        }
+        void transferTo(double amount, Client& recipient)
+    {
+        if (amount >= balance)
+        {
+            balance -= amount;
+            recipient.deposit(amount);
+        }
+        else
+        {
+           cout << "Wrong value\n";
+        }
+    }
+        void checkBalance ()
+        {
+            cout << "your balance is -> " << balance << endl;
+        }
+         void Display()
          {
-             Person :: Printinfo();
+             Person :: Display();
              cout << "balance-> " << balance << endl;
          }
 };
