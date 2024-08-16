@@ -16,7 +16,7 @@ public:
         : Employee(name, id, password, salary)
     {}
 
-    void Display()
+    const void Display()
     {
         Employee::Display();
     }

@@ -26,14 +26,13 @@ protected:
 
         }
         //setter
-        void setSalary(double salary){
-        while (!Validation::checkSalary(salary))
-    {
-        cin >> salary;
-    }
-    this->salary = salary;
+        void setSalary(double salary)
+        {
+         while (!Validation::checkSalary(salary)) {
+            cin >> salary;
         }
-
+        this->salary = salary;
+        }
         // getter
         double getSalary()
         {
@@ -41,7 +40,7 @@ protected:
         }
 
         // methods
-         void Display()
+         const void Display()
          {
              Person :: Display();
              cout << "Salary -> " << salary << endl;

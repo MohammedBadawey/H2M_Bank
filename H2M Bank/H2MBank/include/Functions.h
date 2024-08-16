@@ -139,10 +139,10 @@ ValidationData(name, password, salary, "Employee");
 
             switch(AdminChoice)
             {
-                case 1: {CreateEmployeeAccount(); break;}
-                case 2: { break;}
-                case 3: {OpenSystem(); break;}
-                case 4: {cout << "... Goodbye!\n";return;}
+                case 1: {CreateEmployeeAccount();  break;}
+                case 2: {CreateAdminAccount();     break;}
+                case 3: {OpenSystem();             break;}
+                case 4: {cout << "... Goodbye!\n"; return;}
                 default: {cout << "Invalid choice, please try again.\n";}
             }
 

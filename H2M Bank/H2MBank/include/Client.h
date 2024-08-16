@@ -33,13 +33,13 @@ private:
         this->balance = balance;
         }
         // getter
-       double getBalance()
+        const double getBalance()
         {
         return balance;
         }
         // methods
 
-          void deposit(double amount)
+        void deposit(double amount)
         {
         balance += amount;
         cout << "Deposit successful" << endl;
@@ -47,41 +47,41 @@ private:
         }
 
         void withdraw(double amount)
-{
-    if (amount <= balance)
-    {
-    balance -= amount;
- cout << "Withdraw successful" << endl;
- cout << "Your balance now: " << balance << endl;
-    }
-    else
-    {
-        cout << "Wrong value\n";
-    }
-}
-            void transferTo(double amount, Client& recipient)
-{
-    if (amount >= balance)
-    {
-        balance -= amount;
-        recipient.deposit(amount);
-     cout << "Tranafer successful" << endl;
-     cout << "Your balance now: " << balance << endl;
-    }
-    else
-    {
-       cout << "Wrong value\n";
-    }
-}
-        void checkBalance ()
-{
-    cout << "your balance is -> " << balance << endl;
-}
- void Display()
- {
-     Person :: Display();
-     cout << "balance-> " << balance << endl;
- }
+        {
+        if (amount <= balance)
+        {
+            balance -= amount;
+            cout << "Withdraw successful" << endl;
+            cout << "Your balance now: " << balance << endl;
+        }
+        else
+        {
+            cout << "Wrong value\n";
+        }
+        }
+        void transferTo(double amount, Client& recipient)
+        {
+        if (amount <= balance)
+        {
+            balance -= amount;
+            recipient.deposit(amount);
+            cout << "Tranafer successful" << endl;
+            cout << "Your balance now: " << balance << endl;
+        }
+        else
+        {
+            cout << "Wrong value\n";
+        }
+        }
+        const void checkBalance ()
+        {
+            cout << "your balance is -> " << balance << endl;
+        }
+        const void Display()
+        {
+            Person :: Display();
+            cout << "balance-> " << balance << endl;
+        }
 };
 
 #endif // CLIENT_H

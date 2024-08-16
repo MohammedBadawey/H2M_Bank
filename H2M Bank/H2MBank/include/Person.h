@@ -42,21 +42,21 @@ public:
         this->password = password;
     }
 	//getter
-    string getName()const
+    const string getName()const
 	{
 	    return name;
 	}
-	int getId()
+	const int getId()
 	{
 	    return id;
 	}
-	string getPassword()const
+	const string getPassword()const
 	{
 	    return password;
 	}
 
 	//method
-    void Display()
+    const void Display()
     {
         cout << "Name -> " << name << endl;
         cout << "Id -> " << id << endl;
