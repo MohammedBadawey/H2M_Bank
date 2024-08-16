@@ -9,7 +9,6 @@
 #include <Employee.h>
 #include <Admin.h>
 #include <Validation.h>
-#include <BankAccount.h>
 #include <vector>
 using namespace std;
 
@@ -19,8 +18,8 @@ private:
     static vector <Client> clientList;
     static vector <Employee> employeeList;
     static vector <Admin> adminList;
-public:
 
+public:
 
 
     static void ValidationData(string& name, string& password, double& value, const string& type) {
@@ -44,77 +43,71 @@ public:
         } while (type == "Client" ? !Validation::checkBalance(value) : !Validation::checkSalary(value));
     }
 
-
-
-
     static void OpenSystem()
+{
+    int choise;
+    char op;
+    cout << "\t\t\t\t\t Welcome to H2M bank\n";
+   do {
+    cout << "\t\t\t\t\t   :: Main menu ::\n";
+    cout << "\t\t\t\t\t 1-Login\n";
+    cout << "\t\t\t\t\t 2-Create New account\n";
+    cout << "\t\t\t\t\t 3-Administrator\n";
+    cout << "\t\t\t\t\t 4-Exit\n";
+    cout << "\nEnter your choise\n";
+    cin >> choise;
+
+    switch(choise)
     {
-        int choise;
-        char op;
-        cout << "\t\t\t\t\t Welcome to H2M bank\n";
-       do {
-        cout << "\t\t\t\t\t   :: Main menu ::\n";
-        cout << "\t\t\t\t\t 1-Login\n";
-        cout << "\t\t\t\t\t 2-Create New account\n";
-        cout << "\t\t\t\t\t 3-Administrator\n";
-        cout << "\t\t\t\t\t 4-Exit\n";
-        cout << "\nEnter your choise\n";
-        cin >> choise;
-
-        switch(choise)
-        {
-        case 1: {ClientLogin();break;}
-        case 2: {CreateClientAccount();break;}
-        case 3: {AdminLogin();break;}
-        case 4: {cout << "Exiting system... Goodbye!\n";return;}
-        default: {cout << "Invalid choice, please try again.\n";}
-        }
-        do {
-            cout << "Press [Y] to Continue or [N] to Exit: ";
-            cin >> op;
-            op = toupper(op);
-            if(op != 'Y' && op != 'N') {
-                cout << "Invalid input. Please enter 'Y' or 'N'.\n";
-            }
-        } while(op != 'Y' && op != 'N');
-
-        if(op == 'N') {
-            cout << "Exiting system... Goodbye!\n";
-            return;
-        }
-
-       } while(op == 'Y');
+    case 1: {break;}
+    case 2: {CreateClientAccount();break;}
+    case 3: {break;}
+    case 4: {cout << "Exiting system... Goodbye!\n";return;}
+    default: {cout << "Invalid choice, please try again.\n";}
     }
+    do {
+        cout << "Press [Y] to Continue or [N] to Exit: ";
+        cin >> op;
+        op = toupper(op);
+        if(op != 'Y' && op != 'N') {
+            cout << "Invalid input. Please enter 'Y' or 'N'.\n";
+        }
+    } while(op != 'Y' && op != 'N');
+
+    if(op == 'N') {
+        cout << "Exiting system... Goodbye!\n";
+        return;
+    }
+
+   } while(op == 'Y');
+}
 
     static void CreateClientAccount(){
-        string name,password;
-        double balance;
+    string name,password;
+    double balance;
 
-         ValidationData(name, password, balance, "Client");
+     ValidationData(name, password, balance, "Client");
 
 
-     Client newClient(name, clientList.size() + 1, password, balance);
-     clientList.push_back(newClient);
+ Client newClient(name, clientList.size() + 1, password, balance);
+ clientList.push_back(newClient);
 
-        newClient.Display();
-    }
+    newClient.Display();
+}
 
 
 
     static void CreateEmployeeAccount(){
-        string name,password;
-        double salary;
+    string name,password;
+    double salary;
 
-    ValidationData(name, password, salary, "Employee");
+ValidationData(name, password, salary, "Employee");
 
-     Employee newEmployee(name, employeeList.size() + 1, password, salary);
-     employeeList.push_back(newEmployee);
+ Employee newEmployee(name, employeeList.size() + 1, password, salary);
+ employeeList.push_back(newEmployee);
 
-        newEmployee.Display();
-    }
-
-
-
+    newEmployee.Display();
+}
     static void CreateAdminAccount(){
         string name,password;
         double salary;
@@ -126,7 +119,6 @@ public:
 
         newAdmin.Display();
     }
-
 
     static void AdministratorList()
     {
@@ -143,7 +135,7 @@ public:
             switch(AdminChoice)
             {
                 case 1: {CreateEmployeeAccount(); break;}
-                case 2: {CreateAdminAccount(); break;}
+                case 2: { break;}
                 case 3: {OpenSystem(); break;}
                 case 4: {cout << "... Goodbye!\n";return;}
                 default: {cout << "Invalid choice, please try again.\n";}
@@ -151,37 +143,6 @@ public:
 
         } while (AdminChoice != 4);
     }
-
-
-    static void AdminLogin()
-    {
-        string username, password;
-        bool loggedIn = false;
-
-        cout << "Enter your username: ";
-        cin.ignore();
-        getline(cin, username);
-        cout << "Enter your password: ";
-        getline(cin, password);
-
-       for (size_t i = 0; i < adminList.size(); ++i) {
-        const Admin& admin = adminList[i];
-        if (admin.getName() == username && admin.getPassword() == password) {
-            cout << "Admin logged in successfully.\n";
-                loggedIn = true;
-                AdministratorList();
-                break;
-            }
-        }
-
-        if (!loggedIn) {
-            cout << "Invalid username or password. Please try again.\n";
-        }
-    }
-
-
-
-
     static void ClientLogin()
 {
     string username, password;
@@ -244,19 +205,31 @@ public:
 
        } while(op == 'Y');
     }
+    static void AdminLogin()
+    {
+        string username, password;
+        bool loggedIn = false;
 
+        cout << "Enter your username: ";
+        cin.ignore();
+        getline(cin, username);
+        cout << "Enter your password: ";
+        getline(cin, password);
 
+       for (size_t i = 0; i < adminList.size(); ++i) {
+        const Admin& admin = adminList[i];
+        if (admin.getName() == username && admin.getPassword() == password) {
+            cout << "Admin logged in successfully.\n";
+                loggedIn = true;
+                AdministratorList();
+                break;
+            }
+        }
 
-
-
-
-
-
-
-
-
-
-
+        if (!loggedIn) {
+            cout << "Invalid username or password. Please try again.\n";
+        }
+    }
 
 };
 

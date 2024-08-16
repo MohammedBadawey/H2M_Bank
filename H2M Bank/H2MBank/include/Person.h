@@ -2,13 +2,10 @@
 #define PERSON_H
 #include <iostream>
 #include <string>
-#include <cmath>
-#include <exception>
-#include <stdexcept>
 #include <Validation.h>
 using namespace std;
 
-class Person{
+class Person {
 protected:
 	// att
     string name;
@@ -23,38 +20,27 @@ public:
     Person (string name , int id, string password)
     {
         setName(name);
-        SetId(id);
+        setId(id);
         setPassword(password);
     }
 	//setter
-     void setName(string name)
-    {
-        if (Validation ::checkName(name))
-        {
-            this->name=name;
+     void setName(string name) {
+        while (!Validation::checkName(name)) {
+            getline(cin, name);
         }
-        else {cin >> name;
-        setName(name);}
+        this->name = name;
     }
 
-     void SetId(int id)
-    {
-        this->id=id;
+    void setId(int id) {
+        this->id = id;
     }
 
-    void setPassword(string password)
-
-    {
-        if (Validation ::checkPassword(password))
-        {
-        this->password=password;
-        }
-        else {
+    void setPassword(string password) {
+        while (!Validation::checkPassword(password)) {
             cin >> password;
-            setPassword(password);
         }
+        this->password = password;
     }
-
 	//getter
     string getName()const
 	{

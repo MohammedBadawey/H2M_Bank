@@ -1,4 +1,5 @@
 #include "Functions.h"
-vector<Client> Functions::clientList;
-vector<Employee> Functions::employeeList;
-vector<Admin> Functions::adminList;
+vector <Client>   Functions::clientList;
+vector <Employee> Functions::employeeList;
+vector <Admin>    Functions::adminList;
+

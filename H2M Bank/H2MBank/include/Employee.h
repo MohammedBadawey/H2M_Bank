@@ -4,15 +4,15 @@
 #include <string>
 #include <cmath>
 #include <exception>
-#include <stdexcept>
 #include <Person.h>
 #include <Validation.h>
 using namespace std;
 
 class Employee : public Person
 {
+
     	// att
-private:
+protected:
     double salary;
         // con
     public:
@@ -20,22 +20,18 @@ private:
         {
         salary=0.0;
         }
-        Employee(string name , int id, string password, double salary) : Person(name,id,password)
+        Employee(string name , int id, string password, double salary) :Person(name,id,password)
         {
             setSalary(salary);
 
         }
         //setter
-        void setSalary(double salary)
-        {
-        if(Validation::checkBalance(salary))
-          {
-                this->salary=salary;
-          }
-        else {
-            cin >> salary;
-            setSalary(salary);
-        }
+        void setSalary(double salary){
+        while (!Validation::checkSalary(salary))
+    {
+        cin >> salary;
+    }
+    this->salary = salary;
         }
 
         // getter

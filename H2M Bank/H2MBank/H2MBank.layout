@@ -2,66 +2,76 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="include\Employee.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="222" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="include\Person.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="479" topLine="26" />
+			<Cursor1 position="137" topLine="2" />
 		</Cursor>
 	</File>
 	<File name="include\Client.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1102" topLine="36" />
+			<Cursor1 position="716" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="231" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Functions.h" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1602" topLine="46" />
-		</Cursor>
-	</File>
-	<File name="src\Admin.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="22" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Validation.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="814" topLine="27" />
-		</Cursor>
-		<Folding>
-			<Collapse line="48" />
-			<Collapse line="69" />
-		</Folding>
-	</File>
-	<File name="src\Client.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="23" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Employee.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="524" topLine="1" />
-		</Cursor>
-		<Folding>
-			<Collapse line="29" />
-			<Collapse line="42" />
-			<Collapse line="48" />
-		</Folding>
-	</File>
-	<File name="src\Employee.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Client.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="23" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\Admin.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="389" topLine="0" />
+			<Cursor1 position="114" topLine="7" />
 		</Cursor>
 	</File>
-	<File name="src\Person.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Validation.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Functions.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6841" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="102" />
+			<Collapse line="114" />
+			<Collapse line="127" />
+			<Collapse line="129" />
+			<Collapse line="151" />
+			<Collapse line="174" />
+			<Collapse line="213" />
+		</Folding>
+	</File>
+	<File name="src\Functions.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="24" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Validation.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1987" topLine="52" />
+		</Cursor>
+	</File>
+	<File name="src\Employee.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Admin.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="20" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Person.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="23" topLine="0" />
 		</Cursor>

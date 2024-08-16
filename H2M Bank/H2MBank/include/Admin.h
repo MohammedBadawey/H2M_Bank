@@ -11,23 +11,33 @@ using namespace std;
 
 class Admin : public Employee
 {
-public:
-    static Admin* AdminAccount;
+private:
+    static Admin* instance;
     Admin(string name, int id, string password, double salary)
-        : Employee(name, id, password, salary) {}
+        : Employee(name, id, password, salary)
+    {}
 
 public:
-    static Admin& getAdminAccount() {
-        if (AdminAccount == nullptr) {
-            AdminAccount = new Admin("admin", 1, "admin12345", 12000);
+    static Admin* getInstance(string name, int id, string password, double salary)
+    {
+        if (instance == nullptr)
+        {
+            instance = new Admin(name, id, password, salary);
         }
-        return *AdminAccount;
+        return instance;
     }
 
     void Display()
     {
         Employee::Display();
     }
+
+    ~Admin()
+    {
+        delete instance;
+        instance = nullptr;
+    }
 };
+
 
 #endif // ADMIN_H

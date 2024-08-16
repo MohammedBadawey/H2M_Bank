@@ -19,7 +19,7 @@ public:
         int sum=0;
         for(int i =0;i<lengthOfName;i++)
     {
-        if(isalpha(name[i])|| name[i]== ' ')
+        if(isalpha(name[i]))
         {
             sum++;
         }
@@ -30,11 +30,13 @@ public:
             }
            else {
             cout << "The name must be only characters\n";
+            cout << "Enter your named again\n";
             return false;
            }
 }
       else {
         cout << "The name must be between 5 and 20 characters\n";
+        cout << "Enter your named again\n";
         return false;
       }
     }

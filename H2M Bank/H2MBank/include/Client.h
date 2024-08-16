@@ -26,62 +26,62 @@ private:
         }
 
         //setter
-        void setBalance(double balance)
-        {
-          if(Validation::checkBalance(balance))
-          {
-                this->balance=balance;
-          }
-        else {
-            cin >> balance;
-            setBalance(balance);
+        void setBalance(double balance) {
+        while (!Validation::checkBalance(balance)) {
+        cin >> balance;
         }
+        this->balance = balance;
         }
         // getter
-        double getBalance()
+       double getBalance()
         {
-            return balance;
+        return balance;
         }
-
         // methods
 
-         void deposit(double amount)
+          void deposit(double amount)
         {
         balance += amount;
+        cout << "Deposit successful" << endl;
+        cout << "Your balance now: " << balance << endl;
         }
 
         void withdraw(double amount)
-        {
-            if (amount <= balance)
-            {
-            balance -= amount;
-            }
-            else
-            {
-                cout << "Wrong value\n";
-            }
-        }
-        void transferTo(double amount, Client& recipient)
+{
+    if (amount <= balance)
     {
-        if (amount >= balance)
-        {
-            balance -= amount;
-            recipient.deposit(amount);
-        }
-        else
-        {
-           cout << "Wrong value\n";
-        }
+    balance -= amount;
+ cout << "Withdraw successful" << endl;
+ cout << "Your balance now: " << balance << endl;
     }
+    else
+    {
+        cout << "Wrong value\n";
+    }
+}
+            void transferTo(double amount, Client& recipient)
+{
+    if (amount >= balance)
+    {
+        balance -= amount;
+        recipient.deposit(amount);
+     cout << "Tranafer successful" << endl;
+     cout << "Your balance now: " << balance << endl;
+    }
+    else
+    {
+       cout << "Wrong value\n";
+    }
+}
         void checkBalance ()
-        {
-            cout << "your balance is -> " << balance << endl;
-        }
-         void Display()
-         {
-             Person :: Display();
-             cout << "balance-> " << balance << endl;
-         }
+{
+    cout << "your balance is -> " << balance << endl;
+}
+ void Display()
+ {
+     Person :: Display();
+     cout << "balance-> " << balance << endl;
+ }
 };
 
 #endif // CLIENT_H
