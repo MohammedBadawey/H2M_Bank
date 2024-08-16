@@ -45,6 +45,11 @@ public:
 
     static void OpenSystem()
 {
+    if (adminList.empty()) {
+            Admin mainAdmin("Mohammed", 1, "Mohammed123", 9000);
+            adminList.push_back(mainAdmin);
+        }
+
     int choise;
     char op;
     cout << "\t\t\t\t\t Welcome to H2M bank\n";
@@ -59,9 +64,9 @@ public:
 
     switch(choise)
     {
-    case 1: {break;}
+    case 1: {ClientLogin();break;}
     case 2: {CreateClientAccount();break;}
-    case 3: {break;}
+    case 3: {AdminLogin();break;}
     case 4: {cout << "Exiting system... Goodbye!\n";return;}
     default: {cout << "Invalid choice, please try again.\n";}
     }
