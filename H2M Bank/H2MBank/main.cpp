@@ -13,9 +13,10 @@
 
 using namespace std;
 
-
 int main(){
+    Admin& admin = Admin::getAdminAccount();
     Functions::OpenSystem();
+
 
     return 0;
 

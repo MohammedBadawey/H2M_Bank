@@ -48,7 +48,7 @@ private:
          void Display()
          {
              Person :: Display();
-             cout << "Salary-> " << salary << endl;
+             cout << "Salary -> " << salary << endl;
          }
 };
 

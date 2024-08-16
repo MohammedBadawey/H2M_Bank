@@ -56,7 +56,7 @@ public:
     }
 
 	//getter
-    string getName()
+    string getName()const
 	{
 	    return name;
 	}
@@ -64,7 +64,7 @@ public:
 	{
 	    return id;
 	}
-	string getPassword()
+	string getPassword()const
 	{
 	    return password;
 	}
