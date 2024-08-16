@@ -13,7 +13,7 @@
 
 using namespace std;
 
-vector<Client> Functions::clientList;
+
 int main(){
     Functions::OpenSystem();
 
