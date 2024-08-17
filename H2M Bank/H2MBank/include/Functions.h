@@ -61,7 +61,7 @@ public:
     switch(choise)
     {
     case 1: {ClientLogin();break;}
-    case 2: {CreateClientAccount();break;}
+    case 2: {CreateAccount("Client");;break;}
     case 3: {AdminLogin();break;}
     case 4: {cout << "Exiting system... Goodbye!\n";return;}
     default: {cout << "Invalid choice, please try again.\n";}
@@ -83,32 +83,28 @@ public:
    } while(op == 'Y');
 }
 
-    static void CreateClientAccount(){
-    string name,password;
-    double balance;
-    int id = Client::getNewClientId();
-
-     ValidationData(name, password, balance, "Client");
-
-    Client* newClient = new Client(name,id, password, balance);
-    clientList.push_back(newClient);
-
-    cout << "Account created successfully.\n";
-    newClient->Display();
-}
-
-
-
-    static void CreateEmployeeAccount(){
-    string name,password;
-    double salary;
-    int id = Employee::getNewEmployeeId();
-ValidationData(name, password, salary, "Employee");
-
- Employee newEmployee(name, id, password, salary);
- employeeList.push_back(newEmployee);
-
-    newEmployee.Display();
+    static void CreateAccount(const string& accountType){
+    string name, password;
+    double acountTypeValue;
+    int id;
+      if (accountType == "Client") {
+        id = Client::getNewClientId();
+        ValidationData(name, password, acountTypeValue, "Client");
+        Client* newClient = new Client(name, id, password, acountTypeValue);
+        clientList.push_back(newClient);
+        cout << "Client account created successfully.\n";
+        newClient->Display();
+    }
+    else if (accountType == "Employee") {
+        id = Employee::getNewEmployeeId();
+        ValidationData(name, password, acountTypeValue, "Employee");
+        Employee newEmployee(name, id, password, acountTypeValue);
+        employeeList.push_back(newEmployee);
+        cout << "Employee account created successfully.\n";
+        newEmployee.Display();
+    } else {
+        cout << "Invalid account type.\n";
+    }
 }
 
 
@@ -125,7 +121,7 @@ ValidationData(name, password, salary, "Employee");
 
             switch(AdminChoice)
             {
-                 case 1: {CreateEmployeeAccount();  break;}
+                 case 1: {CreateAccount("Employee");;  break;}
                  case 2: {OpenSystem();             break;}
                  case 3: {cout << "... Goodbye!\n"; return;}
                 default: {cout << "Invalid choice, please try again.\n";}
