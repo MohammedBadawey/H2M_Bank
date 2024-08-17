@@ -16,7 +16,7 @@ class Functions
 {
 private:
     static vector <Client*> clientList;
-    static vector <Employee> employeeList;
+    static vector <Employee*> employeeList;
     static vector <Admin*> adminList;
 
 public:
@@ -61,6 +61,7 @@ public:
    } while(op == 'Y');
 }
 
+
     static void CreateAccount(const string& accountType){
     string name, password;
     double acountTypeValue;
@@ -76,14 +77,15 @@ public:
     else if (accountType == "Employee") {
         id = Employee::getNewEmployeeId();
         Validation::ValidationData(name, password, acountTypeValue, "Employee");
-        Employee newEmployee(name, id, password, acountTypeValue);
+        Employee* newEmployee = new Employee(name, id, password, acountTypeValue);
         employeeList.push_back(newEmployee);
         cout << "Employee account created successfully.\n";
-        newEmployee.Display();
+        newEmployee->Display();
     } else {
         cout << "Invalid account type.\n";
     }
 }
+
 
 
     static void AdministratorList()
@@ -107,6 +109,7 @@ public:
 
         } while (AdminChoice != 4);
     }
+
     static void ClientLogin()
 {
     string username, password;
@@ -131,6 +134,8 @@ public:
         cout << "Invalid username or password. Please try again.\n";
     }
 }
+
+
     static void ClientMenu(){
     int choise;
         char op;
@@ -171,6 +176,8 @@ public:
 
        } while(op == 'Y');
     }
+
+
     static void AdminLogin()
     {
         string username, password;
@@ -195,6 +202,20 @@ public:
         }
     }
 
+    static Client* SearchClientById()
+{
+    int id;
+    cout << "Enter the Client ID to search: ";
+    cin >> id;
+    if (id > 0 && id <= clientList.size()) {
+        Client* client = clientList[id - 1];
+        client->Display();
+        return client;
+    } else {
+        cout << "Client with ID " << id << " not found.\n";
+        return nullptr;
+    }
+}
 
 };
 
