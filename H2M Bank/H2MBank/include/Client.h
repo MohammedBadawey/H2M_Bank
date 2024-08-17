@@ -14,13 +14,15 @@ class Client : public Person
     	// att
 private:
     double balance;
+    static int newClientId;
         // con
     public:
         Client()
         {
         balance=0.0;
+        id = newClientId++;
         }
-        Client(string name , int id, string password, double balance) : Person(name,id,password)
+        Client(string name , int id, string password, double balance) : Person(name,newClientId++,password)
         {
           setBalance(balance);
         }
@@ -33,10 +35,8 @@ private:
         this->balance = balance;
         }
         // getter
-        const double getBalance()
-        {
-        return balance;
-        }
+        const double getBalance(){return balance;}
+        static int getNewClientId(){return newClientId;}
         // methods
 
         void deposit(double amount)

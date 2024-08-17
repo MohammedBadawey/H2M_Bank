@@ -15,9 +15,9 @@ using namespace std;
 class Functions
 {
 private:
-    static vector <Client> clientList;
+    static vector <Client*> clientList;
     static vector <Employee> employeeList;
-    static vector <Admin> adminList;
+    static vector <Admin*> adminList;
 
 public:
 
@@ -45,11 +45,7 @@ public:
 
     static void OpenSystem()
 {
-    if (adminList.empty()) {
-            Admin mainAdmin("Mohammed", 1, "Mohammed123", 9000);
-            adminList.push_back(mainAdmin);
-        }
-
+    Admin* admin = Admin::getInstance();
     int choise;
     char op;
     cout << "\t\t\t\t\t Welcome to H2M bank\n";
@@ -90,14 +86,15 @@ public:
     static void CreateClientAccount(){
     string name,password;
     double balance;
+    int id = Client::getNewClientId();
 
      ValidationData(name, password, balance, "Client");
 
+    Client* newClient = new Client(name,id, password, balance);
+    clientList.push_back(newClient);
 
- Client newClient(name, clientList.size() + 1, password, balance);
- clientList.push_back(newClient);
-
-    newClient.Display();
+    cout << "Account created successfully.\n";
+    newClient->Display();
 }
 
 
@@ -105,25 +102,15 @@ public:
     static void CreateEmployeeAccount(){
     string name,password;
     double salary;
-
+    int id = Employee::getNewEmployeeId();
 ValidationData(name, password, salary, "Employee");
 
- Employee newEmployee(name, employeeList.size() + 1, password, salary);
+ Employee newEmployee(name, id, password, salary);
  employeeList.push_back(newEmployee);
 
     newEmployee.Display();
 }
-    static void CreateAdminAccount(){
-        string name,password;
-        double salary;
 
-     ValidationData(name, password, salary, "Admin");
-
-     Admin newAdmin(name, adminList.size() + 1, password, salary);
-     adminList.push_back(newAdmin);
-
-        newAdmin.Display();
-    }
 
     static void AdministratorList()
     {
@@ -131,18 +118,16 @@ ValidationData(name, password, salary, "Employee");
         do {
             cout << "\t\t\t\t\t   :: Administrator Menu ::\n";
             cout << "\t\t\t\t\t 1-Add Employee\n";
-            cout << "\t\t\t\t\t 2-Add Admin\n";
-            cout << "\t\t\t\t\t 3-Return to Main Menu\n";
-            cout << "\t\t\t\t\t 4-Exit\n";
+            cout << "\t\t\t\t\t 2-Return to Main Menu\n";
+            cout << "\t\t\t\t\t 3-Exit\n";
             cout << "\nEnter your choice\n";
             cin >> AdminChoice;
 
             switch(AdminChoice)
             {
-                case 1: {CreateEmployeeAccount();  break;}
-                case 2: {CreateAdminAccount();     break;}
-                case 3: {OpenSystem();             break;}
-                case 4: {cout << "... Goodbye!\n"; return;}
+                 case 1: {CreateEmployeeAccount();  break;}
+                 case 2: {OpenSystem();             break;}
+                 case 3: {cout << "... Goodbye!\n"; return;}
                 default: {cout << "Invalid choice, please try again.\n";}
             }
 
@@ -161,8 +146,8 @@ ValidationData(name, password, salary, "Employee");
 
     // Check for client
     for (size_t i = 0; i < clientList.size(); ++i) {
-        const Client& client = clientList[i];
-        if (client.getName() == username && client.getPassword() == password) {
+        const Client* client = clientList[i];
+        if (client->getName() == username && client->getPassword() == password) {
             cout << "Client logged in successfully.\n";
             loggedIn = true;
             ClientMenu();
@@ -180,18 +165,20 @@ ValidationData(name, password, salary, "Employee");
         cout << "\t\t\t\t\t 1-Deposit amount\n";
         cout << "\t\t\t\t\t 2-Withdraw amount\n";
         cout << "\t\t\t\t\t 3-Show balance\n";
-        cout << "\t\t\t\t\t 4-Delete account\n";
-        cout << "\t\t\t\t\t 5-Exit\n";
+        cout << "\t\t\t\t\t 4-Transfer\n";
+        cout << "\t\t\t\t\t 5-Delete account\n";
+        cout << "\t\t\t\t\t 6-Exit\n";
         cout << "\nEnter your choise\n";
         cin >> choise;
 
         switch(choise)
         {
-        case 1: {cout << "Coming soon\n";break;}
-        case 2: {cout << "Coming soon\n";break;}
-        case 3: {cout << "Coming soon\n";break;}
-        case 4: {cout << "Coming soon\n";break;}
-        case 5: {cout << "Exiting system... Goodbye!\n";return;}
+         case 1: {cout << "Coming soon\n";break;}
+         case 2: {cout << "Coming soon\n";break;}
+         case 3: {cout << "Coming soon\n";break;}
+         case 4: {cout << "Coming soon\n";break;}
+         case 5: {cout << "Coming soon\n";break;}
+         case 6: {cout << "Exiting system... Goodbye!\n";return;}
         default: {cout << "Invalid choice, please try again.\n";}
         }
         do {
@@ -221,20 +208,19 @@ ValidationData(name, password, salary, "Employee");
         cout << "Enter your password: ";
         getline(cin, password);
 
-       for (size_t i = 0; i < adminList.size(); ++i) {
-        const Admin& admin = adminList[i];
-        if (admin.getName() == username && admin.getPassword() == password) {
+       Admin* admin = Admin::getInstance();
+        if (admin->getName() == username && admin->getPassword() == password) {
             cout << "Admin logged in successfully.\n";
-                loggedIn = true;
-                AdministratorList();
-                break;
+            loggedIn = true;
+            AdministratorList();
             }
-        }
+
 
         if (!loggedIn) {
             cout << "Invalid username or password. Please try again.\n";
         }
     }
+
 
 };
 

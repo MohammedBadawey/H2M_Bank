@@ -14,11 +14,14 @@ class Employee : public Person
     	// att
 protected:
     double salary;
+    static int newEmployeeId;
+
         // con
     public:
         Employee()
         {
         salary=0.0;
+        id = newEmployeeId++;
         }
         Employee(string name , int id, string password, double salary) :Person(name,id,password)
         {
@@ -38,6 +41,7 @@ protected:
         {
             return salary;
         }
+        static int getNewEmployeeId(){return newEmployeeId;}
 
         // methods
          const void Display()

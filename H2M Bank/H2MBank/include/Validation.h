@@ -8,41 +8,29 @@
 #include <stdexcept>
 using namespace std;
 
-class Validation {
-public:
-//================================================================================
-    static bool checkName(const string& name)
-    {
-      int lengthOfName=name.length();
-      if( lengthOfName>=5 && lengthOfName<=20)
+class Validation
 {
-        int sum=0;
-        for(int i =0;i<lengthOfName;i++)
+public:
+
+    static bool checkName(const string& name){
+    int lengthOfName = name.length();
+
+    if (lengthOfName < 5 || lengthOfName > 20)
     {
-        if(isalpha(name[i]))
+        cout << "The name must be between 5 and 20 characters\n";
+        return false;
+    }
+
+    for (char c : name)
+    {
+        if (!isalpha(c)&& c != ' ')
         {
-            sum++;
+            cout << "The name must contain only alphabetic characters\n";
+            return false;
         }
     }
-           if(sum==lengthOfName)
-            {
-            return true;
-            }
-           else {
-            cout << "The name must be only characters\n";
-            cout << "Enter your named again\n";
-            return false;
-           }
+        return true;
 }
-      else {
-        cout << "The name must be between 5 and 20 characters\n";
-        cout << "Enter your named again\n";
-        return false;
-      }
-    }
-
-
- //================================================================================
 
 
     static bool checkPassword(const string& password)
@@ -54,7 +42,8 @@ public:
         }
         return true;
     }
- //================================================================================
+
+
     static bool checkBalance(double balance)
     {
         if (balance < 1500)
@@ -64,7 +53,8 @@ public:
         }
         return true;
     }
- //================================================================================
+
+
     static bool checkSalary(double salary)
     {
         if (salary < 5000)
@@ -74,7 +64,7 @@ public:
         }
         return true;
     }
- //================================================================================
+
 };
 
 
