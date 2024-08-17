@@ -65,6 +65,27 @@ public:
         return true;
     }
 
+
+    static void ValidationData(string& name, string& password, double& value, const string& type) {
+        do {
+            cout << "Enter " << type << " name\n";
+            cin.ignore();
+            getline(cin, name);
+        } while (!checkName(name));
+
+        do {
+            cout << "Enter " << type << " password\n";
+            cin >> password;
+        } while (!checkPassword(password));
+
+
+
+        string valueType = type == "Client" ? "balance" : "salary";
+        do {
+            cout << "Enter " << type << " " << valueType << "\n";
+            cin >> value;
+        } while (type == "Client" ? !checkBalance(value) : !checkSalary(value));
+    }
 };
 
 

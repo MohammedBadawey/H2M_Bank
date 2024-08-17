@@ -21,28 +21,6 @@ private:
 
 public:
 
-
-    static void ValidationData(string& name, string& password, double& value, const string& type) {
-        do {
-            cout << "Enter " << type << " name\n";
-            cin.ignore();
-            getline(cin, name);
-        } while (!Validation::checkName(name));
-
-        do {
-            cout << "Enter " << type << " password\n";
-            cin >> password;
-        } while (!Validation::checkPassword(password));
-
-
-
-        string valueType = type == "Client" ? "balance" : "salary";
-        do {
-            cout << "Enter " << type << " " << valueType << "\n";
-            cin >> value;
-        } while (type == "Client" ? !Validation::checkBalance(value) : !Validation::checkSalary(value));
-    }
-
     static void OpenSystem()
 {
     Admin* admin = Admin::getInstance();
@@ -89,7 +67,7 @@ public:
     int id;
       if (accountType == "Client") {
         id = Client::getNewClientId();
-        ValidationData(name, password, acountTypeValue, "Client");
+        Validation::ValidationData(name, password, acountTypeValue, "Client");
         Client* newClient = new Client(name, id, password, acountTypeValue);
         clientList.push_back(newClient);
         cout << "Client account created successfully.\n";
@@ -97,7 +75,7 @@ public:
     }
     else if (accountType == "Employee") {
         id = Employee::getNewEmployeeId();
-        ValidationData(name, password, acountTypeValue, "Employee");
+        Validation::ValidationData(name, password, acountTypeValue, "Employee");
         Employee newEmployee(name, id, password, acountTypeValue);
         employeeList.push_back(newEmployee);
         cout << "Employee account created successfully.\n";
