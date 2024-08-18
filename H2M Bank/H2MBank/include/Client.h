@@ -42,7 +42,6 @@ private:
         void deposit(double amount)
         {
         balance += amount;
-        cout << "Deposit successful" << endl;
         cout << "Your balance now: " << balance << endl;
         }
 
@@ -51,7 +50,6 @@ private:
         if (amount <= balance)
         {
             balance -= amount;
-            cout << "Withdraw successful" << endl;
             cout << "Your balance now: " << balance << endl;
         }
         else
@@ -65,8 +63,6 @@ private:
         {
             balance -= amount;
             recipient.deposit(amount);
-            cout << "Tranafer successful" << endl;
-            cout << "Your balance now: " << balance << endl;
         }
         else
         {
