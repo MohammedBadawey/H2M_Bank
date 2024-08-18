@@ -18,6 +18,7 @@ private:
     static vector <Client*> clientList;
     static vector <Employee*> employeeList;
     static vector <Admin*> adminList;
+    static int currentClientId;
 public:
 
     static void OpenSystem()
@@ -124,9 +125,10 @@ public:
 
     // Check for client
     for (size_t i = 0; i < clientList.size(); ++i) {
-        const Client* client = clientList[i];
+        Client* client = clientList[i];
         if (client->getName() == username && client->getPassword() == password) {
             cout << "Client logged in successfully.\n";
+            currentClientId = client->getId();
             loggedIn = true;
             ClientMenu();
             break;
@@ -222,10 +224,8 @@ public:
     static Client* SearchClientById(int id){
     if (id > 0 && id <= clientList.size()) {
         Client* clientById = clientList[id - 1];
-        cout << "Client with ID " << id << "founded.\n";
         return clientById;}
     else {
-        cout << "Client with ID " << id << " not found.\n";
         return nullptr;}
     }
 
@@ -236,10 +236,12 @@ public:
     cin >> recipientId;
     SearchClientById(recipientId);
     Client* recipient = SearchClientById(recipientId);
+    Client* sender = SearchClientById(currentClientId);
     if (recipient) {
         cout << "Enter amount: ";
         cin >> amount;
     }
+    sender->transferTo(amount,*recipient);
     }
 };
 
