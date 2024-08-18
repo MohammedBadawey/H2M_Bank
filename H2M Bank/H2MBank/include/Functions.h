@@ -18,12 +18,11 @@ private:
     static vector <Client*> clientList;
     static vector <Employee*> employeeList;
     static vector <Admin*> adminList;
-
 public:
 
     static void OpenSystem()
 {
-    Admin* admin = Admin::getInstance();
+
     int choise;
     char op;
     cout << "\t\t\t\t\t Welcome to H2M bank\n";
@@ -94,16 +93,18 @@ public:
         do {
             cout << "\t\t\t\t\t   :: Administrator Menu ::\n";
             cout << "\t\t\t\t\t 1-Add Employee\n";
-            cout << "\t\t\t\t\t 2-Return to Main Menu\n";
-            cout << "\t\t\t\t\t 3-Exit\n";
+            cout << "\t\t\t\t\t 2-Search Client\n";
+            cout << "\t\t\t\t\t 3-Return to Main Menu\n";
+            cout << "\t\t\t\t\t 4-Exit\n";
             cout << "\nEnter your choice\n";
             cin >> AdminChoice;
 
             switch(AdminChoice)
             {
-                 case 1: {CreateAccount("Employee");;  break;}
-                 case 2: {OpenSystem();             break;}
-                 case 3: {cout << "... Goodbye!\n"; return;}
+                 case 1: {CreateAccount("Employee"); break;}
+                 case 2: {SearchClientById();        break;}
+                 case 3: {OpenSystem();              break;}
+                 case 4: {cout << "... Goodbye!\n"; return;}
                 default: {cout << "Invalid choice, please try again.\n";}
             }
 
@@ -112,7 +113,7 @@ public:
 
     static void ClientLogin()
 {
-    string username, password;
+    string username,password;
     bool loggedIn = false;
 
     cout << "Enter your username: ";
@@ -128,6 +129,7 @@ public:
             cout << "Client logged in successfully.\n";
             loggedIn = true;
             ClientMenu();
+            break;
         }
     }
     if (!loggedIn) {
@@ -155,7 +157,7 @@ public:
          case 1: {cout << "Coming soon\n";break;}
          case 2: {cout << "Coming soon\n";break;}
          case 3: {cout << "Coming soon\n";break;}
-         case 4: {cout << "Coming soon\n";break;}
+         case 4: {tranferAmount();break;}
          case 5: {cout << "Coming soon\n";break;}
          case 6: {cout << "Exiting system... Goodbye!\n";return;}
         default: {cout << "Invalid choice, please try again.\n";}
@@ -205,18 +207,40 @@ public:
     static Client* SearchClientById()
 {
     int id;
-    cout << "Enter the Client ID to search: ";
     cin >> id;
     if (id > 0 && id <= clientList.size()) {
-        Client* client = clientList[id - 1];
-        client->Display();
-        return client;
+        Client* clientById = clientList[id - 1];
+        cout << "Client with ID " << id << "founded.\n";
+        clientById->Display();
+        return clientById;
     } else {
         cout << "Client with ID " << id << " not found.\n";
         return nullptr;
     }
 }
 
+    static Client* SearchClientById(int id){
+    if (id > 0 && id <= clientList.size()) {
+        Client* clientById = clientList[id - 1];
+        cout << "Client with ID " << id << "founded.\n";
+        return clientById;}
+    else {
+        cout << "Client with ID " << id << " not found.\n";
+        return nullptr;}
+    }
+
+    static void tranferAmount(){
+    int recipientId;
+    double amount;
+    cout << "Enter recipient id\n";
+    cin >> recipientId;
+    SearchClientById(recipientId);
+    Client* recipient = SearchClientById(recipientId);
+    if (recipient) {
+        cout << "Enter amount: ";
+        cin >> amount;
+    }
+    }
 };
 
 #endif // FUNCTIONS_H
