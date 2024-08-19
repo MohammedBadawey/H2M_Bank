@@ -112,30 +112,38 @@ public:
         } while (AdminChoice != 4);
     }
 
-    static void ClientLogin()
-{
-    string username,password;
+    static void ClientLogin() {
+    int id;
+    string username, password;
     bool loggedIn = false;
 
-    cout << "Enter your username: ";
-    cin.ignore();
-    getline(cin, username);
-    cout << "Enter your password: ";
-    getline(cin, password);
+    cout << "Enter your ID: ";
+    cin >> id;
 
-    // Check for client
-    for (size_t i = 0; i < clientList.size(); ++i) {
-        Client* client = clientList[i];
-        if (client->getName() == username && client->getPassword() == password) {
-            cout << "Client logged in successfully.\n";
-            currentClientId = client->getId();
-            loggedIn = true;
-            ClientMenu();
-            break;
+    if (id > 0 && id <= clientList.size()) {
+        Client* client = clientList[id - 1];
+
+        cout << "Enter your username: ";
+        cin.ignore();
+        getline(cin, username);
+
+        if (client->getName() == username) {
+            cout << "Enter your password: ";
+            getline(cin, password);
+
+            if (client->getPassword() == password) {
+                cout << "Client logged in successfully.\n";
+                currentClientId = client->getId();
+                loggedIn = true;
+                ClientMenu();
+            } else {
+                cout << "Invalid password. Please try again.\n";
+            }
+        } else {
+            cout << "Invalid username for the given ID. Please try again.\n";
         }
-    }
-    if (!loggedIn) {
-        cout << "Invalid username or password. Please try again.\n";
+    } else {
+        cout << "Invalid ID. Please try again.\n";
     }
 }
 
@@ -159,7 +167,7 @@ public:
         {
          case 1: {cout << "Coming soon\n";break;}
          case 2: {cout << "Coming soon\n";break;}
-         case 3: {cout << "Coming soon\n";break;}
+         case 3: {myBalance();break;}
          case 4: {tranferAmount();break;}
          case 5: {displayClient();break;}
          case 6: {cout << "Coming soon\n";break;}
@@ -274,10 +282,15 @@ public:
     }
 }
 
-        static Client* displayClient(){
+    static Client* displayClient(){
         Client* disClient = SearchClientById(currentClientId);
         disClient->Display();
         }
+
+    static void myBalance(){
+    Client* showBalance = SearchClientById(currentClientId);
+    showBalance ->checkBalance();
+    }
 
 };
 
