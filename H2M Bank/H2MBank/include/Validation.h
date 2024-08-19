@@ -23,7 +23,7 @@ public:
 
     for (char c : name)
     {
-        if (!isalpha(c)&& c != ' ')
+        if (!isalpha(c)&&!isspace(c))
         {
             cout << "The name must contain only alphabetic characters\n";
             return false;
@@ -69,8 +69,9 @@ public:
     static void ValidationData(string& name, string& password, double& value, const string& type) {
         do {
             cout << "Enter " << type << " name\n";
-            cin.ignore();
-            getline(cin, name);
+            string temp;
+            getline(cin, temp);
+            name = temp;
         } while (!checkName(name));
 
         do {
@@ -86,6 +87,17 @@ public:
             cin >> value;
         } while (type == "Client" ? !checkBalance(value) : !checkSalary(value));
     }
+
+    static bool isNumberId(const string& str) {
+        for (char c : str) {
+            if (!isdigit(c)) {
+                return false;
+            }
+        }
+        return true;
+}
+
+
 };
 
 

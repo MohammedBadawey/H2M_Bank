@@ -113,40 +113,81 @@ public:
     }
 
     static void ClientLogin() {
-    int id;
-    string username, password;
-    bool loggedIn = false;
+        int id, attemptsUsername = 0, attemptsPassword = 0;
+        string username, password, idString;
+        bool loggedIn = false;
 
-    cout << "Enter your ID: ";
-    cin >> id;
+    do {
+        cout << "Enter your ID: ";
+        cin >> idString;
+        attemptsUsername++;
 
-    if (id > 0 && id <= clientList.size()) {
-        Client* client = clientList[id - 1];
+        if (Validation::isNumberId(idString)) {
+            id = stoi(idString);
 
-        cout << "Enter your username: ";
+            if (id > 0 && id <= clientList.size()) {
+                break;
+            } else if (attemptsUsername < 3) {
+                cout << "Invalid ID. Please enter a valid ID.\n";
+            }
+        } else if (attemptsUsername < 3) {
+            cout << "ID must be a number. Please try again.\n";
+        }
+
+        if (attemptsUsername >= 3) {
+            cout << "Too many failed attempts. Please try again later.\n";
+            return;
+        }
+
+    } while (true);
+
+    attemptsUsername = 0;
+
+    Client* client = clientList[id - 1];
+
         cin.ignore();
+    do {
+        cout << "Enter your username: ";
         getline(cin, username);
+        attemptsUsername++;
 
         if (client->getName() == username) {
-            cout << "Enter your password: ";
-            getline(cin, password);
-
-            if (client->getPassword() == password) {
-                cout << "Client logged in successfully.\n";
-                currentClientId = client->getId();
-                loggedIn = true;
-                ClientMenu();
-            } else {
-                cout << "Invalid password. Please try again.\n";
-            }
-        } else {
-            cout << "Invalid username for the given ID. Please try again.\n";
+            break;
+        } else if (attemptsUsername < 3) {
+            cout << "Username does not match with the entered ID. Please try again.\n";
         }
-    } else {
-        cout << "Invalid ID. Please try again.\n";
-    }
-}
 
+        if (attemptsUsername >= 3) {
+            cout << "Too many failed attempts. Please try again later.\n";
+            return;
+        }
+
+    } while (true);
+
+    attemptsPassword = 0;
+
+    do {
+        cout << "Enter your password: ";
+        getline(cin, password);
+        attemptsPassword++;
+
+        if (client->getPassword() == password) {
+            cout << "Client logged in successfully.\n";
+            currentClientId = client->getId();
+            loggedIn = true;
+            ClientMenu();
+            return;
+        } else if (attemptsPassword < 3) {
+            cout << "Invalid password. Please try again.\n";
+        }
+
+        if (attemptsPassword >= 3) {
+            cout << "Too many failed attempts. Please try again later.\n";
+            return;
+        }
+
+    } while (true);
+}
 
     static void ClientMenu(){
     int choise;
