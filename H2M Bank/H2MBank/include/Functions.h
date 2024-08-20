@@ -209,7 +209,7 @@ public:
          case 1: {cout << "Coming soon\n";break;}
          case 2: {cout << "Coming soon\n";break;}
          case 3: {myBalance();break;}
-         case 4: {tranferAmount();break;}
+         case 4: {transferAmount();break;}
          case 5: {displayClient();break;}
          case 6: {cout << "Coming soon\n";break;}
          case 7: {cout << "Exiting system... Goodbye!\n";return;}
@@ -279,47 +279,63 @@ public:
         return nullptr;}
     }
 
-    static void tranferAmount(){
-
-
-
-    int recipientId;
+    static void transferAmount() {
+    int recipientId, attempts;
     double amount;
-    cout << "Enter recipient id\n";
-    cin >> recipientId;
+    attempts = 0;
+    bool validRecipient = false;
 
-    Client* recipient = SearchClientById(recipientId);
-    if (recipient) {
-        cout << "Client found by name: " << recipient->getName() << endl;
-        char confirm;
+    do {
+        cout << "Enter recipient id\n";
+        cin >> recipientId;
+        attempts++;
 
-
-        do {
-            cout << "Do you want to proceed with the transfer? (y/n): ";
-            cin >> confirm;
-            confirm = toupper(confirm);
-            if(confirm != 'Y' && confirm != 'N'){
-                cout << "Invalid input. Please enter 'Y' or 'N'.\n";
-            }
-        } while(confirm != 'Y' && confirm != 'N');
-
-        if (confirm == 'Y') {
-            Client* sender = SearchClientById(currentClientId);
-            cout << "Enter amount: ";
-            cin >> amount;
-            if (amount > 0) {
-                    if(sender->getBalance() >= amount){
-                sender->transferTo(amount, *recipient);
-                cout << "Transfer completed successfully.\n";
-                }else{cout << "Insufficient balance. Transfer canceled.\n";}
+        if (recipientId == currentClientId) {
+            cout << "Cannot transfer to yourself. Transfer canceled.\n";
+        } else {
+            Client* recipient = SearchClientById(recipientId);
+            if (recipient) {
+                cout << "Client found by name: " << recipient->getName() << endl;
+                validRecipient = true;
+                break;
             } else {
-                cout << "Invalid amount entered. Transfer canceled.\n";
+                cout << "Recipient not found. Please try again.\n";
+            }
+        }
+    } while (attempts < 3 && !validRecipient);
+
+    if (!validRecipient) {
+        cout << "Failed to enter a valid recipient. Transfer canceled.\n";
+        return;
+    }
+
+    char confirm;
+    do {
+        cout << "Do you want to proceed with the transfer? (y/n): ";
+        cin >> confirm;
+        confirm = toupper(confirm);
+        if(confirm != 'Y' && confirm != 'N'){
+            cout << "Invalid input. Please enter 'Y' or 'N'.\n";
+        }
+    } while(confirm != 'Y' && confirm != 'N');
+
+    if (confirm == 'Y') {
+        Client* sender = SearchClientById(currentClientId);
+        cout << "Enter amount: ";
+        cin >> amount;
+        if (amount > 0) {
+            if(sender->getBalance() >= amount){
+                sender->transferTo(amount, *SearchClientById(recipientId));
+                cout << "Transfer completed successfully.\n";
+                cout << "Your balance Now is -> " << sender->getBalance() << endl;
+            } else {
+                cout << "Insufficient balance. Transfer canceled.\n";
             }
         } else {
-            cout << "Transfer canceled.\n";
+            cout << "Invalid amount entered. Transfer canceled.\n";
         }
     } else {
-        cout << "Recipient not found.\n";
+        cout << "Transfer canceled.\n";
     }
 }
 

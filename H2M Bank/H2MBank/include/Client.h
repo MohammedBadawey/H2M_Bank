@@ -42,7 +42,6 @@ private:
         void deposit(double amount)
         {
         balance += amount;
-        cout << "Your balance now: " << balance << endl;
         }
 
         void withdraw(double amount)
@@ -50,7 +49,6 @@ private:
         if (amount <= balance)
         {
             balance -= amount;
-            cout << "Your balance now: " << balance << endl;
         }
         else
         {
